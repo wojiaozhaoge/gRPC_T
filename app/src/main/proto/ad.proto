@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+package partners;
+
+import "common_fields.proto";
+
+message AdMedia {
+	int64 ID = 1;
+	string PositionSign = 2;
+	string Title = 3;
+	string TimeFrom = 4;
+	string TimeTo = 5;
+	string Content = 6;
+	string URL = 7;
+	string Tag = 8;
+	string AdType = 9;
+	int64 width = 10;
+	int64 height = 11;
+}
+
+message AdMediaRequest {
+	string PositionSign = 1;
+	int64 AppType = 2;
+	int64 PartnerID = 3;
+	fields.CommonRequest CommonRequest = 4;
+}
+
+message AdMediaResponse {
+	repeated AdMedia MediaList = 1;
+	fields.CommonResponse Reply = 2;
+}
+
+service AdService {
+	rpc GetAdMediaList(AdMediaRequest) returns (AdMediaResponse){};
+}
